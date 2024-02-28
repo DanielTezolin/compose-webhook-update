@@ -1,0 +1,11 @@
+FROM golang:latest
+
+RUN apt-get update
+
+# install docker-compose
+RUN curl -L "https://github.com/docker/compose/releases/v2.24.6/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+RUN chmod +x /usr/local/bin/docker-compose
+RUN $(uname -s)-$(uname -m)
+WORKDIR /app
+
+CMD ["go", "run", "main.go"]
